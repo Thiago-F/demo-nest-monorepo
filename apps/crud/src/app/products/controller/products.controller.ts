@@ -1,9 +1,11 @@
-import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, Post, Put, UseGuards } from '@nestjs/common';
+import { AuthGuard } from '@nestjs/passport';
 import { SaveProductDto } from '../dto/save-product.dto';
 import { UpdateProductDto } from '../dto/update-product.dto';
 import { ProductService } from '../service/products.service';
 
 @Controller('api/v1/product')
+@UseGuards(AuthGuard('jwt'))
 export class ProductsController {
     constructor(
         private readonly productService: ProductService
@@ -30,7 +32,8 @@ export class ProductsController {
     }
 
     @Delete(':id')
+    @HttpCode(HttpStatus.NO_CONTENT)
     async destroy(@Param('id') id: string) {
-        return this.productService.destroy(id)
+        await this.productService.destroy(id)
     }
 }

@@ -25,9 +25,10 @@ export class ProductService {
 
     async findById(options: FindOneOptions<ProductEntity>): Promise<ProductEntity> {
         try {
-            return this.productRepository.findOneOrFail(options)
+            const product = await this.productRepository.findOneOrFail(options)
+            return product
         } catch (error) {
-            throw new NotFoundException(error.message)
+            throw new NotFoundException('No product was found')
         }
     }
 

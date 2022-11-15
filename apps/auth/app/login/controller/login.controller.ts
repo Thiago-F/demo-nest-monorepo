@@ -1,9 +1,10 @@
 import { Body, Controller, Post, Req, UseGuards } from '@nestjs/common';
-import { LoginService } from './login.service';
-import { LoginDto } from './dto/login.dto';
 import { AuthGuard } from '@nestjs/passport';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
-import { UnauthorizedParamsPattern, OkParamsPattern } from './swagger/response-patterns.swagger'
+
+import { LoginService } from '../service/login.service';
+import { LoginDto } from '../dto/login.dto';
+import { UnauthorizedParamsPattern, OkParamsPattern } from '../swagger/response-patterns.swagger'
 
 
 @Controller('/api/v1/login')

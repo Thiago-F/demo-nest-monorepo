@@ -1,8 +1,9 @@
-import { Injectable } from '@nestjs/common';
-import { UserEntity } from '../entities/user.entity';
-import { SignupService } from '../signup/signup.service';
 import { compareSync } from 'bcrypt'
+import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
+
+import { UserEntity } from '../../entities/user.entity';
+import { SignupService } from '../../signup/signup.service';
 
 @Injectable()
 export class LoginService {

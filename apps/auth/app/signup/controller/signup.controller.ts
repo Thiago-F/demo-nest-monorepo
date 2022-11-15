@@ -1,9 +1,9 @@
 import { Body, Controller, Post } from '@nestjs/common';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
-import { UserEntity } from '../entities/user.entity';
-import { SignUpDto } from './dto/signup.dto';
-import { SignupService } from './signup.service';
-import { InvalidParamsPattern } from './swagger/response-patterns.swagger';
+import { UserEntity } from '../../entities/user.entity';
+import { SignUpDto } from '../dto/signup.dto';
+import { SignupService } from '../service/signup.service';
+import { InvalidParamsPattern } from '../swagger/response-patterns.swagger';
 
 @Controller('/api/v1/signup')
 @ApiTags('signup')

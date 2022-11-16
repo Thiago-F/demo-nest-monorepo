@@ -14,7 +14,7 @@ export class SignUpDto {
     email: string;
 
     @IsNotEmpty()
-    @Matches(PASSWORD_REGEX)
+    @Matches(PASSWORD_REGEX, { message: 'A senha deve conter letras maiusculas, minusculas, numeros e simbolos' })
     @ApiProperty()
     password: string;
 

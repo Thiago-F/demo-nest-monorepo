@@ -5,6 +5,7 @@ import { AuthModule } from './auth.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AuthModule);
+
   app.useGlobalPipes(new ValidationPipe())
 
   const config = new DocumentBuilder()

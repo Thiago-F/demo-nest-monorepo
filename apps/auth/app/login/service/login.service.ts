@@ -3,7 +3,7 @@ import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 
 import { UserEntity } from '../../entities/user.entity';
-import { SignupService } from '../../signup/signup.service';
+import { SignupService } from '../../signup/service/signup.service';
 
 @Injectable()
 export class LoginService {

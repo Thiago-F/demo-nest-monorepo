@@ -13,7 +13,7 @@ export class SignupService {
     ) { }
 
     async findUserByEmail(email: string) {
-        return await this.usersRepository.findOneOrFail({ where: { email } })
+        return await this.usersRepository.findOne({ where: { email } })
     }
 
     async signup(data: SignUpDto) {
@@ -21,6 +21,11 @@ export class SignupService {
 
         if (password !== confirmPassword) {
             throw new UnauthorizedException('Password does not match with confirmPassword')
+        }
+
+        const checkIfUserExists = await this.findUserByEmail(rest.email)
+        if (checkIfUserExists) {
+            throw new UnauthorizedException('User email already exists')
         }
 
         const user = this.usersRepository.create({ ...rest, client_secret: password })

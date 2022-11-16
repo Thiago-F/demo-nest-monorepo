@@ -1,9 +1,10 @@
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { UserEntity } from '../app/entities/user.entity';
 import { LoginModule } from '../app/login/login.module';
+import { RequestMiddleware } from '../app/middlewares/request.middleware';
 import { SignupModule } from '../app/signup/signup.module';
 
 @Module({
@@ -25,4 +26,9 @@ import { SignupModule } from '../app/signup/signup.module';
   controllers: [],
   providers: [],
 })
-export class AuthModule { }
+export class AuthModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer.apply(RequestMiddleware).forRoutes('*')
+  }
+}
+

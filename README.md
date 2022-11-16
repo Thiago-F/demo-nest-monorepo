@@ -20,9 +20,16 @@ $ npm install
 # development
 $ npm run start <app>
 
+# To auth app the port is 3001
+# To crud app the port is 3000
+
 # production mode
 $ npm run start:prod <app>
 ```
+
+## Running the Docs
+
+To run the documentation of all endpoints just call the /api route
 
 ## Test
 
